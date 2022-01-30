@@ -1,5 +1,5 @@
 import os
-ARGON = os.environ.get('ARGON')
+TELEGRAM_USERNAME = os.environ.get('TELEGRAM_USERNAME')
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
 USERNAME = os.environ.get('USERNAME')
 PASSWORD = os.environ.get('PASSWORD')

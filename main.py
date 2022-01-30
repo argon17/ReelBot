@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from Lol import BOT_TOKEN, ARGON, CHROME_DRIVER_PATH, API_ID, API_HASH
+from Lol import BOT_TOKEN, TELEGRAM_USERNAME, CHROME_DRIVER_PATH, API_ID, API_HASH
 from scrapeTools import getText
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -18,7 +18,7 @@ def getDriver():
     return driver
 
 
-@bot.on_message(filters.command('getTop') & filters.chat(ARGON))
+@bot.on_message(filters.command('getTop') & filters.chat(TELEGRAM_USERNAME))
 async def handleGet(bot, message):
     driver = getDriver()
     keyword = message.text[30:message.text.find('?utm_medium=copy_link')]
@@ -27,7 +27,7 @@ async def handleGet(bot, message):
     await message.reply(textMessage)
 
 
-@bot.on_message(filters.command('getAll') & filters.chat(ARGON))
+@bot.on_message(filters.command('getAll') & filters.chat(TELEGRAM_USERNAME))
 async def handleGet(bot, message):
 
     driver = getDriver()
