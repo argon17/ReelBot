@@ -1,19 +1,30 @@
-from Profile import Profile
+from profile import Profile
+
+from selenium import webdriver
 from selenium.webdriver.common.by import By
-from Lol import BASE_URL, USERNAME, PASSWORD
+from constant import BASE_URL, USERNAME, PASSWORD
 from random import randint
 import time
 
 
-def getRandomTime():
+def getRandomTime() -> int:
+    """
+    returns a random integer from 1 to 3
+    """
     randTime = randint(1, 3)
     return randTime
 
-def login(browser):
+def login(browser: webdriver):
+    """
+    [login into instagram]
+
+    Args:
+        browser (webdriver): Selenium webdriver for rendering JavaScript and loading dynamic content
+    """
     browser.get(BASE_URL)
     browser.implicitly_wait(300)
 
-    username_input = browser.find_element(By.CSS_SELECTOR, "input[name='username']")
+    username_input = browser.find_element(By.CSS_SELECTOR, "inputname='username']")
     password_input = browser.find_element(By.CSS_SELECTOR, "input[name='password']")
 
     username_input.send_keys(USERNAME)
@@ -35,7 +46,18 @@ def login(browser):
     time.sleep(getRandomTime())
 
 
-def getText(driver, PROFILE, allMillion = False):
+def getText(driver: webdriver, PROFILE: str, allMillion: bool = False) -> str:
+    """
+    Returns the text to send
+
+    Args:
+        driver (webdriver): Selenium webdriver for rendering JavaScript and loading dynamic content
+        PROFILE (str): username for the profile
+        allMillion (bool, optional): to scrape all million views reels or just top 10. Defaults to False.
+
+    Returns:
+        str: text to be sent
+    """
 
     login(driver)
 
