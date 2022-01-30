@@ -1,5 +1,5 @@
 # ReelBot
-No more manual scrolling to watch reels, this bot filters out more viewed reels for a given profile
+No more manual scrolling to watch reels, this bot filters out most viewed reels for a given profile
 
 # Two main features
 
