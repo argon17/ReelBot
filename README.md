@@ -36,22 +36,22 @@ $ virtualenv [ENV_NAME]
 ```
 ## 5. Setup your environment variables.
 You can define environment variables in 
-- windows
+- on linux
 ```
 $ nano [ENV_NAME]/bin/activate
 ```
-- linux
+- on windows
 ```
 $ nano [ENV_NAME]/bin/activate.bat
 ```
 
 Add all environment variables to the end of file 
-- on windows 
+- on linux 
 
 ```
 export KEY=VALUE
 ```
-- on linux
+- on windows
 
 ```
 set KEY=VALUE
