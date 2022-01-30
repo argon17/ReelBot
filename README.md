@@ -65,7 +65,12 @@ export KEY=VALUE
 set KEY=VALUE
 ```
 
-## 6. Run the program.
+## 6. Install dependencies.
+```
+$ pip3 install -r requirements.txt
+```
+
+## 7. Run the program.
 ```
 $ python3 main.py
 ``` 
