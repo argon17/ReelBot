@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from lol import BOT_TOKEN, ARGON, CHROME_DRIVER_PATH, API_ID, API_HASH
+from Lol import BOT_TOKEN, ARGON, CHROME_DRIVER_PATH, API_ID, API_HASH
 from scrapeTools import getText
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
