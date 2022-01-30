@@ -15,6 +15,7 @@ class Reel:
             views (str): views in type str
             viewsInt (int): views in type int
         """
+
         self.URL = reelURL
         self.views = views
         self.viewsInt = viewsInt
@@ -28,9 +29,10 @@ class Profile:
         Args:
             username (str): instagram username for the profile
         """
+
         self.username = username
     
-    def getReels(self, driver: webdriver, maxAmt: int = 0, maxFailedScroll: int = 300) -> List[Reel]:
+    def getReels(self, driver: webdriver, maxAmt: int = 0, maxFailedScroll: int = 100) -> List[Reel]:
         """
         Returns Reel objects from profile scraped using a webdriver
 
@@ -38,11 +40,12 @@ class Profile:
             driver (webdriver): Selenium webdriver for rendering JavaScript and loading dynamic
             content
             maxAmt (int, optional): Maximum amount of reels to return. Defaults to 0.
-            maxFailedScroll (int, optional): Maximum amount of scroll attempts before stopping if scroll is stuck. Defaults to 300.
+            maxFailedScroll (int, optional): Maximum amount of scroll attempts before stopping if scroll is stuck. Defaults to 100.
 
         Returns:
             List[Reel]: reel objects sorted according to views
         """
+
         JS_SCROLL_SCRIPT = "window.scrollTo(0, document.body.scrollHeight); var lenOfPage=document.body.scrollHeight; return lenOfPage;"
         JS_PAGE_LENGTH_SCRIPT = "var lenOfPage=document.body.scrollHeight; return lenOfPage;"
         driver.get(f"https://www.instagram.com/{self.username}/reels/")
@@ -64,6 +67,7 @@ class Profile:
             Returns:
                 [int]: views in type int
             """
+
             views = views.replace(',', '')
             toMultiply = 1
             if not views.isnumeric():
@@ -71,6 +75,8 @@ class Profile:
                 toMultiply = 1e3 if multiplier == 'k' else 1e6
                 views = views[:-1]
             return int(float(views) * toMultiply)
+
+        alreadyPresent = set()
 
         while scrolling:
             # print('scrolling')
@@ -83,8 +89,9 @@ class Profile:
                 views = reelTag.find_all('span')[-1].text
                 viewsInt = getViewsInt(views)
                 reel = Reel(reelURL, views, viewsInt)
-                if reel.URL not in [r.URL for r in reels]:
+                if reel.URL not in alreadyPresent:
                     reels.append(reel)
+                    alreadyPresent.add(reel.URL)
                 else:
                     break
             # print(f"currentPosition: {currentPosition}, lastPosition: {lastPosition}")
@@ -110,6 +117,7 @@ class Profile:
         """
         Separates the HTML and parse the BeautifulSoup for every reel
         """
+        
         soup = BeautifulSoup(sourceData, 'html.parser')
         anchorTags = soup.find_all("a")
         reelTags = [tag for tag in anchorTags if tag.find("div", {"class": "lVhHa _hpij"})]

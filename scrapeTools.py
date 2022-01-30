@@ -7,13 +7,6 @@ from random import randint
 import time
 
 
-def getRandomTime() -> int:
-    """
-    returns a random integer from 1 to 3
-    """
-    randTime = randint(1, 3)
-    return randTime
-
 def login(browser: webdriver):
     """
     [login into instagram]
@@ -21,29 +14,28 @@ def login(browser: webdriver):
     Args:
         browser (webdriver): Selenium webdriver for rendering JavaScript and loading dynamic content
     """
-    browser.get(BASE_URL)
-    browser.implicitly_wait(300)
 
-    username_input = browser.find_element(By.CSS_SELECTOR, "inputname='username']")
+    browser.get(BASE_URL)
+    time.sleep(1)
+
+    username_input = browser.find_element(By.CSS_SELECTOR, "input[name='username']")
     password_input = browser.find_element(By.CSS_SELECTOR, "input[name='password']")
 
     username_input.send_keys(USERNAME)
     password_input.send_keys(PASSWORD)
 
     print('Credentials Entered.')
-    time.sleep(getRandomTime())
 
     login_button = browser.find_element(By.XPATH, "//button[@type='submit']")
     login_button.click()
 
     print('Logging In.')
-    time.sleep(getRandomTime())
+    time.sleep(3)
 
     not_now_btn = browser.find_element(By.XPATH, '//button[text()="Not Now"]')
     not_now_btn.click()
 
     print('Login Successful')
-    time.sleep(getRandomTime())
 
 
 def getText(driver: webdriver, PROFILE: str, allMillion: bool = False) -> str:
@@ -62,7 +54,7 @@ def getText(driver: webdriver, PROFILE: str, allMillion: bool = False) -> str:
     login(driver)
 
     profile = Profile(PROFILE)
-    reels = profile.getReels(driver, maxAmt = 200)
+    reels = profile.getReels(driver, maxAmt = 50)
     if not allMillion:
         reels = reels[:10]
     else:

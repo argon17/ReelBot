@@ -15,6 +15,7 @@ def getDriver():
     """
     return webdriver object
     """
+
     options = webdriver.ChromeOptions()
     s = Service(CHROME_DRIVER_PATH)
     driver = webdriver.Chrome(service = s, options = options)
@@ -26,6 +27,7 @@ async def handleGet(bot, message):
     """
     Handles getTop command
     """
+
     driver = getDriver()
     keyword = message.text[30:message.text.find('?utm_medium=copy_link')]
     textMessage = getText(driver, keyword)
@@ -38,6 +40,7 @@ async def handleGet(bot, message):
     """
     Handles getAll command
     """
+
     driver = getDriver()
     keyword = message.text[30:message.text.find('?utm_medium=copy_link')]
     textMessage = getText(driver, keyword, allMillion = True)
