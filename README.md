@@ -1,21 +1,29 @@
 # ReelBot
 No more manual scrolling to watch reels, this bot filters out most viewed reels for a given profile
 
-# Two main features
 
-## 1. getTop
+# Table of Contents
+- [Features](#features)
+- [Preview](#preview)
+- [How to Use](#how-to-use)
+
+
+# Features
+
+## getTop
 
 - Get recent 10 most viewed reels
 ```
 /getTop [profileURL]
 ```
 
-## 2. getAll
+## getAll
 
 - Get recent over million viewed reels
 ```
 /getAll [profileURL]
 ```
+
 
 # Preview
 <img src="docs/ReelBot.gif" width="200">
