@@ -1,6 +1,6 @@
 from Profile import Profile
 from selenium.webdriver.common.by import By
-from lol import BASE_URL, USERNAME, PASSWORD
+from Lol import BASE_URL, USERNAME, PASSWORD
 from random import randint
 import time
 
