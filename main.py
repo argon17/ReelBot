@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service
 
 bot = Client(
     "noobBot",
-    api_id = API_ID,
+    api_id = int(API_ID),
     api_hash = API_HASH,
     bot_token = BOT_TOKEN
 )
@@ -29,7 +29,7 @@ async def handleGet(bot, message):
     """
 
     driver = getDriver()
-    keyword = message.text[30:message.text.find('?utm_medium=copy_link')]
+    keyword = message.text[30:message.text.find('?igshid=')]
     textMessage = getText(driver, keyword)
     driver.close()
     await message.reply(textMessage)
