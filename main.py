@@ -42,7 +42,7 @@ async def handleGet(bot, message):
     """
 
     driver = getDriver()
-    keyword = message.text[30:message.text.find('?utm_medium=copy_link')]
+    keyword = message.text[30:message.text.find('?igshid')]
     textMessage = getText(driver, keyword, allMillion = True)
     driver.close()
     await message.reply(textMessage)
