@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from constant import BOT_TOKEN, TELEGRAM_USERNAME, CHROME_DRIVER_PATH, API_ID, API_HASH
+from constant import BOT_TOKEN, TELEGRAM_USERNAME, CHROME_DRIVER_PATH, GOOGLE_CHROME_BIN, API_ID, API_HASH
 from scrapeTools import getText
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -17,6 +17,8 @@ def getDriver():
     """
 
     options = webdriver.ChromeOptions()
+    options.headless = True
+    options.binary_location = GOOGLE_CHROME_BIN
     s = Service(CHROME_DRIVER_PATH)
     driver = webdriver.Chrome(service = s, options = options)
     return driver

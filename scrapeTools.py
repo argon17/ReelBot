@@ -24,6 +24,8 @@ def login(browser: webdriver):
     username_input.send_keys(USERNAME)
     password_input.send_keys(PASSWORD)
 
+    browser.save_screenshot('screenshots/s1.png')
+
     print('Credentials Entered.')
 
     login_button = browser.find_element(By.XPATH, "//button[@type='submit']")
@@ -32,8 +34,11 @@ def login(browser: webdriver):
     print('Logging In.')
     time.sleep(3)
 
-    not_now_btn = browser.find_element(By.XPATH, '//button[text()="Not Now"]')
-    not_now_btn.click()
+    browser.save_screenshot('screenshots/s2.png')
+
+    # For headless browsers, This is not needed
+    # not_now_btn = browser.find_element(By.XPATH, '//button[text()="Not Now"]')
+    # not_now_btn.click()
 
     print('Login Successful')
 
